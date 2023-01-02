@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DemoApp2.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Ping")]
     public class PingController : Controller
     {
         private readonly ILogger<PingController> _logger;
@@ -14,8 +15,10 @@ namespace DemoApp2.Controllers
         }
 
         [HttpGet(Name = "Ping")]
+        [AllowAnonymous]
         public IActionResult Ping()
         {
+            _logger?.LogInformation("Ping");
             return Ok("Pong");
         }
     }
