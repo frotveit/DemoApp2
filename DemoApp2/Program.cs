@@ -1,3 +1,4 @@
+using DemoApp2;
 using Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,17 +13,6 @@ builder.Services.SetupServices();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app = app.Setup();
 
 app.Run();

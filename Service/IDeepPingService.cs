@@ -2,6 +2,6 @@
 {
     public interface IDeepPingService
     {
-        string DeepPing();
+        Task<string> DeepPing();
     }
 }
